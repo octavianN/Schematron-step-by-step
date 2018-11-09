@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="schematron-validation" default="schematron-run">
+    <property name="lib.dir" value="lib"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="file.sch" value="test/flowers.sch"/>
+    <property name="file.xml" value="test/flowers.xml"/>
+
+    <target name="schematron-run">
+        <delete><fileset dir="${dist.dir}"></fileset></delete>
+        
+        <!-- expand inclusions -->
+        <xslt basedir="test/schematron" style="code/iso_dsdl_include.xsl" in="${file.sch}" out="${dist.dir}/test1.sch">
+            <classpath>
+                <pathelement location="${lib.dir}/saxon9.jar"/>
+            </classpath>
+        </xslt>
+
+        <!-- expand abstract patterns -->
+        <xslt basedir="test/schematron" style="code/iso_abstract_expand.xsl" in="${dist.dir}/test1.sch" out="${dist.dir}/test2.sch">
+            <classpath>
+                <pathelement location="${lib.dir}/saxon9.jar"/>
+            </classpath>
+        </xslt>
+
+        <!-- compile it -->
+        <xslt basedir="test/schematron" style="code/iso_svrl_for_xslt2.xsl" in="${dist.dir}/test2.sch" out="${dist.dir}/test.xsl">
+            <classpath>
+                <pathelement location="${lib.dir}/saxon9.jar"/>
+            </classpath>
+        </xslt>
+
+        <!-- validate -->
+        <xslt basedir="test/schematron" style="${dist.dir}/test.xsl" in="${file.xml}" out="${dist.dir}/instance.svrl">
+            <classpath>
+                <pathelement location="${lib.dir}/saxon9.jar"/>
+            </classpath>
+        </xslt>
+    </target>
+</project>

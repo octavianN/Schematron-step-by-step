@@ -1,0 +1,33 @@
+diff a/trunk/schematron/code/iso_schematron_skeleton_for_saxon.xsl b/trunk/schematron/code/iso_schematron_skeleton_for_saxon.xsl	(rejected hunks)
+@@ -643,25 +643,30 @@
+    validated. For convenience, if the caller only has the information in a single string,
+    that string could be put in fileDirParameter. The archives parameters are available
+    for ZIP archives.
+ 	-->
+     
+     <xsl:call-template name="iso:exslt.add.imports" /> <!-- RJ moved report BH -->
+ 	<axsl:param name="archiveDirParameter" />
+ 	<axsl:param name="archiveNameParameter" />
+ 	<axsl:param name="fileNameParameter"  />
+ 	<axsl:param name="fileDirParameter" /> 
+ 	
+        
+-    <axsl:variable name="document-uri"><axsl:value-of select="document-uri(/)" /></axsl:variable>
++    <axsl:variable name="document-uri">
++		<xsl:if test="@queryBinding and translate(@queryBinding, 'XSLT', 'xslt')!='xslt' 
++			and translate(@queryBinding, 'XSLT', 'xslt')!='xslt1' and @queryBinding!='xpath'">
++			<axsl:value-of select="document-uri(/)" />
++		</xsl:if>
++	</axsl:variable>
+     <xsl:text>&#10;&#10;</xsl:text><xsl:comment>PHASES</xsl:comment><xsl:text>&#10;</xsl:text>
+ 	<xsl:call-template name="handle-phase"/> 
+     <xsl:text>&#10;&#10;</xsl:text><xsl:comment>PROLOG</xsl:comment><xsl:text>&#10;</xsl:text>
+ 	<xsl:call-template name="process-prolog"/> 
+     <xsl:text>&#10;&#10;</xsl:text><xsl:comment>XSD TYPES FOR XSLT2</xsl:comment><xsl:text>&#10;</xsl:text>
+ 	<xsl:apply-templates mode="do-types"   select="xsl:import-schema"/>
+     <xsl:text>&#10;&#10;</xsl:text><xsl:comment>KEYS AND FUNCTIONS</xsl:comment><xsl:text>&#10;</xsl:text>
+ 	<xsl:apply-templates mode="do-keys"   select="xsl:key | xsl:function "/>
+     <xsl:text>&#10;&#10;</xsl:text><xsl:comment>DEFAULT RULES</xsl:comment><xsl:text>&#10;</xsl:text>
+     <xsl:call-template name="generate-default-rules" />
+     <xsl:text>&#10;&#10;</xsl:text><xsl:comment>SCHEMA SETUP</xsl:comment><xsl:text>&#10;</xsl:text>
+     <xsl:call-template name="handle-root"/>

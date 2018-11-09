@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><html xmlns:test="http://www.jenitennison.com/xslt/unit-test" xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Test Report for Users/octavian/Documents/Octavian/Tekom2018/SchematronTutorial/Sampels/Test/price.sch-compiled.xsl (passed: 1 / pending: 0 / failed: 1 / total: 2)</title>
+      <link rel="stylesheet" type="text/css" href="file:/Applications/Oxygen%20XML%20Editor/frameworks/xspec/src/reporter/test-report.css" />
+   </head>
+   <body>
+      <h1>Test Report</h1>
+      <p>Stylesheet: <a href="file:/Users/octavian/Documents/Octavian/Tekom2018/SchematronTutorial/Sampels/Test/price.sch-compiled.xsl">Users/octavian/Documents/Octavian/Tekom2018/SchematronTutorial/Sampels/Test/price.sch-compiled.xsl</a></p>
+      <p>Tested: 4 November 2018 at 18:44</p>
+      <h2>Contents</h2>
+      <table class="xspec">
+         <col width="75%" />
+         <col width="6.25%" />
+         <col width="6.25%" />
+         <col width="6.25%" />
+         <col width="6.25%" />
+         <thead>
+            <tr>
+               <th></th>
+               <th class="totals">passed: 1</th>
+               <th class="totals">pending: 0</th>
+               <th class="totals">failed: 1</th>
+               <th class="totals">total: 2</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr class="successful">
+               <th><a href="#d3e4">Schematron: "price.sch"</a></th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+               <th class="totals">0</th>
+            </tr>
+            <tr class="failed">
+               <th><a href="#d3e10">Test prce</a></th>
+               <th class="totals">1</th>
+               <th class="totals">0</th>
+               <th class="totals">1</th>
+               <th class="totals">2</th>
+            </tr>
+         </tbody>
+      </table>
+      <div id="d3e4">
+         <h2 class="successful">Schematron: "price.sch"<span class="scenario-totals"></span></h2>
+         <table class="xspec" id="t-d3e4">
+            <col width="75%" />
+            <col width="25%" />
+            <tbody>
+               <tr class="successful">
+                  <th>Schematron: "price.sch"</th>
+                  <th></th>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div id="d3e10">
+         <h2 class="successful">Test prce<span class="scenario-totals">passed: 1 / pending: 0 / failed: 1 / total: 2</span></h2>
+         <table class="xspec" id="t-d3e10">
+            <col width="75%" />
+            <col width="25%" />
+            <tbody>
+               <tr class="successful">
+                  <th>Test prce</th>
+                  <th>passed: 1 / pending: 0 / failed: 1 / total: 2</th>
+               </tr>
+               <tr class="failed">
+                  <th><a href="#d3e17">Scenario for testing a rule</a></th>
+                  <th>passed: 1 / pending: 0 / failed: 1 / total: 2</th>
+               </tr>
+               <tr class="failed">
+                  <td><a href="#d3e41">Should be trigered we have a small price:  assert priceTooSmall</a></td>
+                  <td>Failure</td>
+               </tr>
+               <tr class="successful">
+                  <td>Should be trigered we have a big price:  report priceTooBig</td>
+                  <td>Success</td>
+               </tr>
+            </tbody>
+         </table>
+         <h3 id="d3e17">Test prce Scenario for testing a rule</h3>
+         <h4 id="d3e41">Should be trigered we have a small price:  assert priceTooSmall</h4>
+         <table class="xspecResult">
+            <thead>
+               <tr>
+                  <th>Result</th>
+                  <th>Expected Result</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><pre>&lt;<span class="diff">svrl:schematron-output</span> xmlns:schold="http://www.ascc.net/xml/schematron"
+         xmlns:iso="http://purl.oclc.org/dsdl/schematron"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+         <span class="diff">title</span>=""
+         <span class="diff">schemaVersion</span>=""&gt;<span class="diff">&lt;--   
+		   
+		   
+		 --&gt;</span>
+   &lt;<span class="diff">svrl:active-pattern</span> <span class="diff">document</span>="file:/Users/octavian/Documents/Octavian/Tekom2018/SchematronTutorial/Sampels/Test/xspec//context-d1e5.xml" /&gt;
+   &lt;<span class="diff">svrl:fired-rule</span> <span class="diff">context</span>="book" /&gt;
+   &lt;<span class="diff">svrl:fired-rule</span> <span class="diff">context</span>="book" /&gt;
+   &lt;<span class="diff">svrl:successful-report</span> <span class="diff">test</span>="@price &gt; 1000"
+                          <span class="diff">id</span>="priceTooBig"
+                          <span class="diff">location</span>="/books/book[2]"&gt;
+      &lt;<span class="diff">svrl:text</span>&gt;<span class="diff">The book price is too big</span>&lt;/svrl:text&gt;
+   &lt;/svrl:successful-report&gt;
+&lt;/svrl:schematron-output&gt;</pre></td>
+                  <td><pre>()</pre></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </body>
+</html>

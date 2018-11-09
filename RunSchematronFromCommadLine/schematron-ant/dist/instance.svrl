@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                        xmlns:saxon="http://saxon.sf.net/"
+                        xmlns:schold="http://www.ascc.net/xml/schematron"
+                        xmlns:iso="http://purl.oclc.org/dsdl/schematron"
+                        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+                        title=""
+                        schemaVersion=""><!--   
+		   
+		   
+		 -->
+   <svrl:active-pattern document="file:/D:/GitRepos/Schematron-step-by-step/RunSchematronFromCommadLine/schematron-ant/test/flowers.xml"/>
+   <svrl:fired-rule context="title/b"/>
+   <svrl:successful-report test="true()" role="warn" location="/topic[1]/title[1]/b[1]">
+      <svrl:text> Bold element is not allowed in
+        title.</svrl:text>
+   </svrl:successful-report>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="ul"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:successful-report test="ends-with((.//text()[normalize-space()!=''])[last()], ';')"
+                           role="info"
+                           location="/topic[1]/body[1]/section[1]/ul[1]/li[1]">
+      <svrl:text> It is not recommended to add a semicolon after a list item.</svrl:text>
+   </svrl:successful-report>
+   <svrl:fired-rule context="xref[@scope = 'external']"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:successful-report test="ends-with((.//text()[normalize-space()!=''])[last()], ';')"
+                           role="info"
+                           location="/topic[1]/body[1]/section[1]/ul[1]/li[2]">
+      <svrl:text> It is not recommended to add a semicolon after a list item.</svrl:text>
+   </svrl:successful-report>
+   <svrl:fired-rule context="xref[@scope = 'external']"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="xref[@scope = 'external']"/>
+   <svrl:failed-assert test="@format"
+                       role="error"
+                       location="/topic[1]/body[1]/section[1]/ul[1]/li[3]/xref[1]">
+      <svrl:text> Referenced resource
+          "http://en.wikipedia.org/wiki/Compost" needs to have the "format" attribute set to
+        it.</svrl:text>
+   </svrl:failed-assert>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="xref[@scope = 'external']"/>
+   <svrl:failed-assert test="matches(@href, '^http(s?)://')"
+                       role="warn"
+                       location="/topic[1]/body[1]/section[1]/p[3]/xref[1]">
+      <svrl:text>
+        An external link should start with http(s).</svrl:text>
+   </svrl:failed-assert>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="table"/>
+   <svrl:failed-assert test="$minColumsNo &gt;= $reqColumsNo"
+                       location="/topic[1]/body[1]/section[2]/table[1]">
+      <svrl:text>Cells are missing. (The
+        number of cells for each row must be 3)</svrl:text>
+   </svrl:failed-assert>
+   <svrl:fired-rule context="p"/>
+   <svrl:successful-report test="starts-with($pText, 'Note')"
+                           role="warn"
+                           location="/topic[1]/body[1]/section[3]/p[1]">
+      <svrl:text>The paragraph is a note</svrl:text>
+   </svrl:successful-report>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="ol"/>
+   <svrl:failed-assert test="false()"
+                       role="error"
+                       location="/topic[1]/body[1]/section[3]/ol[1]">
+      <svrl:text> Ordered lists are not
+        allowed, use unordered lists instead.</svrl:text>
+   </svrl:failed-assert>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="ul"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="ul"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="ul"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="ul"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="p"/>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="ul"/>
+   <svrl:failed-assert test="count(li) &gt; 1"
+                       role="warn"
+                       location="/topic[1]/body[1]/section[3]/ol[1]/li[4]/ul[1]">
+      <svrl:text> A list must have more than
+        one item </svrl:text>
+   </svrl:failed-assert>
+   <svrl:fired-rule context="li"/>
+   <svrl:fired-rule context="p"/>
+</svrl:schematron-output>

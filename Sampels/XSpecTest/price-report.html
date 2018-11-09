@@ -1,0 +1,60 @@
+<html xmlns:test="http://www.jenitennison.com/xslt/unit-test">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <link rel="stylesheet" type="text/css" href="file:/Users/octavian/Library/Preferences/com.oxygenxml/extensions/v20.1/frameworks/https___raw.githubusercontent.com_xspec_oXygen_XML_editor_xspec_support_master_build_update_site.xml/xspec.support-1.0.1/oxygen-results-view/test-report.css"><script type="text/javascript" src="file:/Users/octavian/Library/Preferences/com.oxygenxml/extensions/v20.1/frameworks/https___raw.githubusercontent.com_xspec_oXygen_XML_editor_xspec_support_master_build_update_site.xml/xspec.support-1.0.1/oxygen-results-view/test-report.js"></script></head>
+   <body>
+      <div class="testsuite" data-name="Scenario for testing a rule" template-id="x4fa8dfe6-cc43-3593-b3c4-6a6654b3257a" data-source="file:/Users/octavian/Documents/Octavian/Tekom2018/SchematronTutorial/Sampels/Test/price.xspec" data-tests="2" data-failures="1">
+         <p style="margin:0px;"><span>Scenario for testing a rule</span><span>&nbsp;</span><a class="button" onclick="runScenario(this)">Run</a></p>
+         <div class="testcase" data-name="Should be trigered we have a small price:  assert priceTooSmall">
+            <p class="failed"><span class="test-failed" onclick="toggleResult(this)">Should be trigered we have a small price:  assert priceTooSmall</span><span>&nbsp;</span><a class="button" onclick="showTest(this)">Show</a><span>&nbsp;</span><a class="button" onclick="toggleResult(this)">Q-Diff</a><span>&nbsp;</span><a class="button" onclick="showDiff(this)">Diff</a></p>
+            <div class="failure" id="d3e27" style="display:none;">
+               <table class="xspecResult">
+                  <thead>
+                     <tr>
+                        <th style="font-size:14px;">Result</th>
+                        <th style="font-size:14px;">Expected</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td><pre>&lt;<span xmlns="http://www.w3.org/1999/xhtml" class="diff">svrl:schematron-output</span> xmlns:schold="http://www.ascc.net/xml/schematron"
+         xmlns:iso="http://purl.oclc.org/dsdl/schematron"
+         xmlns:xhtml="http://www.w3.org/1999/xhtml"
+         xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+         <span xmlns="http://www.w3.org/1999/xhtml" class="diff">title</span>=""
+         <span xmlns="http://www.w3.org/1999/xhtml" class="diff">schemaVersion</span>=""&gt;<span xmlns="http://www.w3.org/1999/xhtml" class="diff">&lt;--  &nbsp;
+		  &nbsp;
+		  &nbsp;
+		 --&gt;</span>
+   &lt;<span xmlns="http://www.w3.org/1999/xhtml" class="diff">svrl:active-pattern</span> <span xmlns="http://www.w3.org/1999/xhtml" class="diff">document</span>="file:/Users/octavian/Documents/Octavian/Tekom2018/SchematronTutorial/Sampels/Test/xspec//context-d1e5.xml" /&gt;
+   &lt;<span xmlns="http://www.w3.org/1999/xhtml" class="diff">svrl:fired-rule</span> <span xmlns="http://www.w3.org/1999/xhtml" class="diff">context</span>="book" /&gt;
+   &lt;<span xmlns="http://www.w3.org/1999/xhtml" class="diff">svrl:fired-rule</span> <span xmlns="http://www.w3.org/1999/xhtml" class="diff">context</span>="book" /&gt;
+   &lt;<span xmlns="http://www.w3.org/1999/xhtml" class="diff">svrl:successful-report</span> <span xmlns="http://www.w3.org/1999/xhtml" class="diff">test</span>="@price &gt; 1000"
+                          <span xmlns="http://www.w3.org/1999/xhtml" class="diff">id</span>="priceTooBig"
+                          <span xmlns="http://www.w3.org/1999/xhtml" class="diff">location</span>="/books/book[2]"&gt;
+      &lt;<span xmlns="http://www.w3.org/1999/xhtml" class="diff">svrl:text</span>&gt;<span xmlns="http://www.w3.org/1999/xhtml" class="diff">The book price is too big</span>&lt;/svrl:text&gt;
+   &lt;/svrl:successful-report&gt;
+&lt;/svrl:schematron-output&gt;</pre></td>
+                        <td><pre>()</pre></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div><pre class="embeded.diff.data" style="display:none;"><div class="embeded.diff.result" style="white-space:pre;">
+&lt;svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="" schemaVersion=""&gt;&lt;!--  &nbsp;
+		  &nbsp;
+		  &nbsp;
+		 --&gt;
+   &lt;svrl:active-pattern document="file:/Users/octavian/Documents/Octavian/Tekom2018/SchematronTutorial/Sampels/Test/xspec//context-d1e5.xml"/&gt;
+   &lt;svrl:fired-rule context="book"/&gt;
+   &lt;svrl:fired-rule context="book"/&gt;
+   &lt;svrl:successful-report test="@price &amp;gt; 1000" id="priceTooBig" location="/books/book[2]"&gt;
+      &lt;svrl:text&gt;The book price is too big&lt;/svrl:text&gt;
+   &lt;/svrl:successful-report&gt;
+&lt;/svrl:schematron-output&gt;
+</div><div class="embeded.diff.expected" style="white-space:pre;">()</div></pre></div>
+         <div class="testcase" data-name="Should be trigered we have a big price:  report priceTooBig">
+            <p class="passed"><span class="test-passed" onclick="toggleResult(this)">Should be trigered we have a big price:  report priceTooBig</span><span>&nbsp;</span><a class="button" onclick="showTest(this)">Show</a></p>
+         </div>
+      </div>
+   </body>
+</html>
