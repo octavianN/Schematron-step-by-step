@@ -31,10 +31,10 @@ Tests that are executed in the same context can be grouped in a **rule** element
 
 _Example 2: A set of tests for the book element_
 ```
-**<rule context="book">**
+<rule context="book">
     <assert test="@price > 10">The price is too small</assert>
     <assert test="@isbn">The book ISBN is missing</assert>
-**</rule>**
+</rule>
 ```
 
 A set of rules that are related in some way can be grouped in a **pattern** element. The **pattern** elements are added in a **schema** element, that is the top-level element of a Schematron schema **.**
