@@ -32,8 +32,8 @@
 
     <!-- Table asserts -->
     <sch:rule context="table">
-      <sch:let name="minColumsNo" value="min(//row/count(entry))"/>
-      <sch:let name="reqColumsNo" value="max(//row/count(entry))"/>
+      <sch:let name="minColumsNo" value="min(.//row/count(entry))"/>
+      <sch:let name="reqColumsNo" value="max(.//row/count(entry))"/>
 
       <!-- Check the number of cells on each row -->
       <sch:assert test="$minColumsNo >= $reqColumsNo">Cells are missing. (The number of cells for

@@ -3,14 +3,28 @@
     <x:scenario label="Test prce">
         <x:context>
             <books>
+                <book price="9"/> 
+                <book price="3000"/> 
+            </books>
+        </x:context>
+        
+        <x:scenario label="Scenario for testing a rule">
+            <x:expect-assert label="Should be trigered, we have a small price: " id="priceTooSmall"/>
+            <x:expect-report label="Should be trigered, we have a big price: " id="priceTooBig"/>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario label="Test prce big">
+        <x:context>
+            <books>
                 <book price="90"/> 
                 <book price="3000"/> 
             </books>
         </x:context>
-
+        
         <x:scenario label="Scenario for testing a rule">
-            <x:expect-assert label="Should be trigered we have a small price: " id="priceTooSmall"/>
-            <x:expect-report label="Should be trigered we have a big price: " id="priceTooBig"/>
+            <x:expect-not-assert label="Should not be trigered: " id="priceTooSmall"/>
+            <x:expect-report label="Should be trigered, we have a big price: " id="priceTooBig"/>
         </x:scenario>
     </x:scenario>
 </x:description>
