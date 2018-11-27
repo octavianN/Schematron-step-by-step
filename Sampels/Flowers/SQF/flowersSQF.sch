@@ -31,8 +31,9 @@
     </sch:rule>
     
     <!-- Title - styling elements are not allowed in title. -->
-    <sch:rule context="title">
-      <sch:report test="b" subject="b" role="info" sqf:fix="resolveBold"> Bold is not allowed in title.</sch:report>
+    <sch:rule context="title | shortdesc">
+      <sch:report test="b" subject="b" role="info" sqf:fix="resolveBold"> Bold is not allowed in <sch:name/>
+        element.</sch:report>
 
       <!-- Quick fix that converts a bold element into text -->
       <sqf:fix id="resolveBold">
@@ -146,5 +147,13 @@
     </xsl:template>
     <!-- Template used to skip the @class attribute from being copied -->
     <xsl:template match="@class" mode="copyExceptClass"/>
+  </sch:pattern>
+  
+  <sch:pattern>
+    <sch:rule context="text()">
+      <sch:report test="matches(., '(http|www)\S+') 
+        and local-name(parent::node()) != 'xref'" role="info">
+        The link should be an an xref element</sch:report>
+    </sch:rule>
   </sch:pattern>
 </sch:schema>

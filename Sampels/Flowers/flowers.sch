@@ -4,7 +4,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   <sch:pattern>
     <!-- Title - styling elements are not allowed in title. -->
-    <sch:rule context="title">
+    <sch:rule context="title | shortdesc">
       <sch:report test="b" subject="b" role="info"> Bold is not allowed in <sch:name/>
         element.</sch:report>
     </sch:rule>

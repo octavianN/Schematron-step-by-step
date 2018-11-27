@@ -3,6 +3,8 @@
 <?xml-model href="flowers.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <topic id="growing_flowers">
   <title>Growing <b>Flowers</b></title>
+  <shortdesc>When caring for your <b>flower</b> garden you want to feed your plants properly,
+    control pests and weeds.</shortdesc>
   <body>
     <section>
       <title>Introduction</title>
