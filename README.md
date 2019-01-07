@@ -4,7 +4,7 @@ Tutorial
 
 Octavian Nadolu, Syncro Soft
 
-[![Step-By-Step Guide to Developing Schematron Rules](https://img.youtube.com/vi/w4jtBsSIiyw/0.jpg "Step-By-Step Guide to Developing Schematron Rules")]https://www.youtube.com/watch?v=w4jtBsSIiyw)
+[![Step-By-Step Guide to Developing Schematron Rules](https://img.youtube.com/vi/w4jtBsSIiyw/0.jpg "Step-By-Step Guide to Developing Schematron Rules")](https://www.youtube.com/watch?v=w4jtBsSIiyw)
 
 
 
