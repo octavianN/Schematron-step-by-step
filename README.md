@@ -4,6 +4,10 @@ Tutorial
 
 Octavian Nadolu, Syncro Soft
 
+[![Step-By-Step Guide to Developing Schematron Rules](https://img.youtube.com/vi/w4jtBsSIiyw/0.jpg "Step-By-Step Guide to Developing Schematron Rules")]https://www.youtube.com/watch?v=w4jtBsSIiyw)
+
+
+
 Schematron is a very simple and powerful language. It is used in various domains (financial, insurance, government, and technical publishing sectors) for quality assurance, validating business rules, constraint checking, or data reporting. During the presentation, I will show you how to create Schematron rules step-by-step, apply the rules over one or multiple documents, and also how to integrate Schematron rules in your development process.
 
 Schematron is a rule-based validation language for making assertions about presence or absence of certain patterns in XML documents. With Schematron, you can express constraints in a way that you cannot perform with other schemas (like XSD, RNG, or DTD). XSD, RNG, and DTD schemas define structural aspects and data types of the XML documents and can be used to check big things, such as if an element is allowed in a specific context, or if an attribute is allowed for an element. But with Schematron, you can create your custom rules specific to your project, and check things such as if the text from an element respects a particular constraint, or verify data inter-dependencies such as if a start date from an attribute value is set before the end date attribute value.
