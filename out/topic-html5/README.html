@@ -1,0 +1,148 @@
+<!DOCTYPE html
+  SYSTEM "about:legacy-compat">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="copyright" content="(C) Copyright 2020"><meta name="DC.rights.owner" content="(C) Copyright 2020"><meta name="DC.type" content="topic"><meta name="DC.format" content="HTML5"><meta name="DC.identifier" content="step_by_step_guide_to_developing_schematron_rules"><link rel="stylesheet" type="text/css" href="commonltr.css"><title>Step-By-Step Guide to Developing Schematron Rules</title></head><body id="step_by_step_guide_to_developing_schematron_rules"><main role="main"><article role="article" aria-labelledby="ariaid-title1">
+    <h1 class="title topictitle1" id="ariaid-title1">Step-By-Step Guide to Developing Schematron Rules</h1>
+    <div class="body">
+        <p class="p">Octavian Nadolu, Syncro Soft</p>
+        <div class="embed-responsive embed-responsive-16by9"><video class="video embed-responsive-item" controls><source src="https://www.youtube.com/watch?v=w4jtBsSIiyw"></source></video></div>
+        <p class="p">Schematron is a very simple and powerful language. It is used in various domains
+            (financial, insurance, government, and technical publishing sectors) for quality
+            assurance, validating business rules, constraint checking, or data reporting. During the
+            presentation, I will show you how to create Schematron rules step-by-step, apply the
+            rules over one or multiple documents, and also how to integrate Schematron rules in your
+            development process.</p>
+        <p class="p">Schematron is a rule-based validation language for making assertions about presence or
+            absence of certain patterns in XML documents. With Schematron, you can express
+            constraints in a way that you cannot perform with other schemas (like XSD, RNG, or DTD).
+            XSD, RNG, and DTD schemas define structural aspects and data types of the XML documents
+            and can be used to check big things, such as if an element is allowed in a specific
+            context, or if an attribute is allowed for an element. But with Schematron, you can
+            create your custom rules specific to your project, and check things such as if the text
+            from an element respects a particular constraint, or verify data inter-dependencies such
+            as if a start date from an attribute value is set before the end date attribute
+            value.</p>
+        <p class="p">In a Schematron document, you can add a collection of rules that contain tests. The
+            Schematron content is written as an XML document using a small number of elements, and
+            this makes it easy to understand and write, even for people that are not
+            programmers.</p>
+        <p class="p">When a document is validated with a Schematron schema, for each rule from the schema, the
+            following steps are performed:</p>
+        <ul class="ul">
+            <li class="li">First, it is determined the context on which the rule is applied. That can be an
+                element, or an attribute, or maybe a text fragment. The context is expressed using
+                an XPath expression.</li>
+            <li class="li">Next, it checks if the assertions from the rule are evaluated to true or false.
+                Depending on the evaluation result, the assertion message is displayed. The
+                assertions are also expressed using XPath expressions that are evaluated to
+                    <em class="ph i">true</em> or <em class="ph i">false</em>.</li>
+        </ul>
+    </div>
+    <article class="topic nested1" aria-labelledby="ariaid-title2" id="schematron_structure">
+        <h2 class="title topictitle2" id="ariaid-title2">Schematron Structure</h2>
+        <div class="body">
+            <p class="p">Basically, the most important components of a Schematron schema are the tests. The
+                tests are defined in the <strong class="ph b">assert</strong> and <strong class="ph b">report</strong> elements. An <strong class="ph b">assert</strong>
+                generates a message when a test statement evaluates to <strong class="ph b">false</strong>. A <strong class="ph b">report</strong>
+                generates a message when a test statement evaluate to <strong class="ph b">true</strong>. The generated
+                messages are defined in the <strong class="ph b">assert</strong> and <strong class="ph b">report</strong> elements. Actually, the
+                Schematron developer writes his own messages, making them understandable to anyone
+                who needs to see the messages.</p>
+            <p class="p"><em class="ph i">Example 1: An assert that tests if the price is greater that 10</em></p>
+            <pre class="pre codeblock"><code> &lt;assert test="@price &gt; 10"&gt;The price is too small&lt;/assert&gt;</code></pre>
+            <p class="p">Tests that are executed in the same context can be grouped in a <strong class="ph b">rule</strong> element.
+                A <strong class="ph b">rule</strong> defines a context on which a list of assertions will be tested, and is
+                comprised of one or more <strong class="ph b">assert</strong> or <strong class="ph b">report</strong> elements.</p>
+            <p class="p"><em class="ph i">Example 2: A set of tests for the book element</em></p>
+            <pre class="pre codeblock"><code>&lt;rule context="book"&gt;&#xD;
+    &lt;assert test="@price &gt; 10"&gt;The price is too small&lt;/assert&gt;&#xD;
+    &lt;assert test="@isbn"&gt;The book ISBN is missing&lt;/assert&gt;&#xD;
+&lt;/rule&gt;</code></pre>
+            <p class="p">A set of rules that are related in some way can be grouped in a <strong class="ph b">pattern</strong>
+                element. The <strong class="ph b">pattern</strong> elements are added in a <strong class="ph b">schema</strong> element, that is
+                the top-level element of a Schematron schema <strong class="ph b">.</strong></p>
+            <p class="p"><em class="ph i">Example 3: A sample ISO Schematron schema</em></p>
+            <pre class="pre codeblock"><code>&lt;schema xmlns="http://purl.oclc.org/dsdl/schematron"&gt;&#xD;
+    &lt;pattern&gt;&#xD;
+        &lt;rule context="book"&gt;&#xD;
+            &lt;assert test="@price &gt; 10"&gt;The price is too small&lt;/assert&gt;&#xD;
+            &lt;assert test="@isbn"&gt;The book isbn is missing&lt;/assert&gt;&#xD;
+        &lt;/rule&gt;&#xD;
+    &lt;/pattern&gt;&#xD;
+&lt;/schema&gt;</code></pre>
+            <p class="p">The Schematron is saved in a file that has the suffix ".sch". Also the prefix for the
+                Schematron elements is by convention "sch:".</p>
+        </div>
+    </article>
+    <article class="topic nested1" aria-labelledby="ariaid-title3" id="validate_with_schematron_schema">
+        <h2 class="title topictitle2" id="ariaid-title3">Validate with Schematron Schema</h2>
+        <div class="body">
+            <p class="p">A Schematron schema can be associated with an XML document using an <strong class="ph b">xml-model</strong>
+                processing instruction. You can also use tool-specific association options like:
+                associate a set al XML files that have a specific namespace with a Schematron, or
+                associate all XML files from a project or from a directory.</p>
+            <p class="p">To validate an XML file with a Schematron schema, you can use an editing framework
+                that will allow you to run the validation on the currently edited XML file and will
+                present the problems directly in the editor. You can also run the validation over
+                multiple XML files and check all the reported problems from a user interface.
+                Another solution is to use Apache Ant, and run the validation from a bat/shell
+                script. You can also use pipelining languages, like W3C&amp;#39;s XProc.</p>
+            <p class="p">The result of the validation can be presented in the editor in case you are using an
+                editing framework, and you will have the content that does not satisfy the
+                assertions highlighted and the messages displayed in the user interface. In case you
+                are using bat/shell script, you can get the validation errors in an XML file,
+                normally the format of the XML file is a Schematron Validation Reporting Language
+                (SVRL).</p>
+            <p class="p">Schematron assertion messages can be presented in different languages. The Schematron
+                developer can create a message for each language using the diagnostics elements. For
+                each translated message, a diagnostic element need to be created and referenced from
+                the assert or report element. Depending on the application language or on the
+                Schematron file language, a message in a specific language can be presented to the
+                user.</p>
+        </div>
+    </article>
+    <article class="topic nested1" aria-labelledby="ariaid-title4" id="schematron_quick_fixes">
+        <h2 class="title topictitle2" id="ariaid-title4">Schematron Quick Fixes</h2>
+        <div class="body">
+            <p class="p">Schematron allows the schema author to define and control the messages that are
+                presented to the user. The messages can also include hints to the user on how to
+                solve the problem, but they will need to manually correct the issue. This wastes
+                valuable time since the user needs to correct the problem manually and additional
+                errors can be created when they fix the reported problem. An action that will
+                automatically correct the reported problem for Schematron validation errors will
+                bridge this gap, saving time and avoiding the potential for causing other
+                issues.</p>
+            <p class="p">Schematron Quick Fix (SQF) it is a simple language that allows the Schematron
+                developer to define actions that will correct the reported problems. SQF was created
+                as an extension of the Schematron language. It was developed within the W3C
+                community group "Quick-Fix Support for XML Community Group". First draft of the
+                Schematron Quick Fix specification was published in April 2015, second draft in
+                March 2018, and it is now available on the <a class="xref" href="https://www.w3.org/community/quickfix/" target="_blank">W3C
+                    Quick-Fix Support for XML community group</a> page.</p>
+            <p class="p"><em class="ph i">Example 4: A Schematron Quick Fix that removes a bold element keeping its text
+                    content</em></p>
+            <pre class="pre codeblock"><code>&lt;sch:rule context="title"&gt;&#xD;
+  &lt;sch:report test="b" sqf:fix="resolveBold"&gt;Bold element is not allowed in title.&lt;/sch:report&gt;&#xD;
+&#xD;
+  &lt;sqf:fix id="resolveBold"&gt;&#xD;
+    &lt;sqf:description&gt;&#xD;
+      &lt;sqf:title&gt;Change the bold element into text&lt;/sqf:title&gt;&#xD;
+    &lt;/sqf:description&gt;&#xD;
+    &lt;sqf:replace match="b" select="node()"/&gt;&#xD;
+  &lt;/sqf:fix&gt;&#xD;
+&lt;/sch:rule&gt;</code></pre>
+            <p class="p">An SQF fix consists of a set of operations that can be performed on an XML document.
+                These are basic operations (add, delete, replace, and string replace) that need to
+                make precise changes in the document. This means that when a fix is applied, only
+                the affected part of the XML document should be changed and the DOCTYPE declaration,
+                entities, etc. must be preserved.</p>
+            <p class="p">Conclusion</p>
+            <p class="p">It is important to have a quality control over the XML documents from your project.
+                To achieve this you can use Schematron schema in combination with an XSD, RNG, or
+                DTD schema. Schematron solves the limitation that other types of schema have when
+                validating XML documents because it allows the schema author to define the tests and
+                control the messages that are presented to the user. The validation problems are
+                more accessible to users and it ensures that they understand the problem.</p>
+            <p class="p">Contact: octavian_<a class="xref" href="mailto:nadolu@oxygenxml.com" target="_blank">mailto:nadolu@oxygenxml.com</a></p>
+        </div>
+    </article>
+</article></main></body></html>
